@@ -17,8 +17,13 @@ interface IERC20Token {
 
 contract StudentRegistration {
 
-    uint internal studentsLength = 0;
-    address internal cUsdTokenAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+    uint internal studentsLength ;
+    address internal cUsdTokenAddress ;
+    // how long the paid tuition will last in seconds
+    uint public tuitionPeriod;
+    // cost of tuition
+    uint public tuitionFee;
+    address payable schoolAddress;
     
     struct Student{
         address payable owner;
@@ -26,61 +31,118 @@ contract StudentRegistration {
         string studentId;
         string name;
         string studyMajor;
-        uint fees;
+        bool expelled;
+        // time till student pays tuition again
+        uint tuitionDate;
+    }
+    
+    
+
+    mapping (uint => Student) public students;
+    
+    constructor(){
+        studentsLength = 0;
+        cUsdTokenAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
+        tuitionPeriod = 5000;
+        tuitionFee = 2 * 1 ether;
+        // school address is the address that deployed this contract
+        schoolAddress = payable(msg.sender);
+    
     }
 
-    mapping (uint => Student) internal students;
-
+    modifier onlyAdmin () {
+        require(msg.sender == schoolAddress, "Only admin can call this function");
+        _;
+    }
+    
     function createStudent(
-        string memory _image,
-        string memory _studentId,
-        string memory _name,
-        string memory _studyMajor,
-        uint _fees
+        string calldata _image,
+        string calldata _studentId,
+        string calldata _name,
+        string calldata _studyMajor
         ) public {
+        bool _expelled = false;
+        uint _tuitionDate = block.timestamp;
         students[studentsLength] = Student(
+            
             payable(msg.sender),
             _image,
             _studentId,
             _name,
             _studyMajor,
-            _fees
+            _expelled,
+            _tuitionDate
             );
             studentsLength++;
+            
     }
 
-    function viewStudent(uint _index) public view returns (
-        address payable,
-        string memory, 
-        string memory, 
-        string memory, 
-        string memory, 
-        uint
-    ) {
-        return (
-            students[_index].owner,
-            students[_index].image, 
-            students[_index].studentId, 
-            students[_index].name, 
-            students[_index].studyMajor,
-            students[_index].fees
-        );
-    }
-    
    
     
     function payTuition(uint _index) public payable  {
         require(
           IERC20Token(cUsdTokenAddress).transferFrom(
             msg.sender,
-            students[_index].owner,
-            students[_index].fees
+            schoolAddress,
+            tuitionFee
           ),
           "Transfer failed."
         );
+        
+        uint _date = students[_index].tuitionDate;
+        // update the time till next pay
+        students[_index].tuitionDate =  _date + tuitionPeriod;
+
     }
+    
+    
+    // check if the student has paid tuition
+     function getTuitionStatus(uint _index) public view returns (bool)  {
+         if(students[_index].tuitionDate < block.timestamp){
+            //  user has not paid
+             return false;
+         }else{
+            //  user has paid
+             return true;
+         }
+       
+
+    }
+    
+    
     
     function getStudentLength() public view returns (uint) {
         return (studentsLength);
     }
+    
+    //  ADMIN FUNCTIONALITIES
+    
+     
+    function expelStudent(uint _index) public onlyAdmin {
+        students[_index].expelled = true;
+        
+    }
+    
+      
+    function revokeOwnership(address _address) public onlyAdmin {
+        schoolAddress = payable(_address);
+        
+    }
+    
+      
+    function changeTuitionFee(uint _fee) public onlyAdmin {
+        tuitionFee = _fee * 1 ether;
+        
+    }
+    
+    function changeTuitionPeriod(uint _duration) public onlyAdmin {
+        tuitionPeriod =  _duration;
+        
+    }
+    
+    
+    
+    
+    
+    
 }

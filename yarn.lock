@@ -445,6 +445,7 @@
   "version" "2.1.6"
 
 "@umpirsky/country-list@https://github.com/umpirsky/country-list#05fda51":
+  "integrity" "sha512-iJcpUOtwOC1xLIp7yyK3ZLYjT/zCrf0BT+e5BGTUYkIF4FpC+W+8WVwm2nJNXiWqbiOLI7z3jtvCR3qJYnU5kA=="
   "resolved" "git+ssh://git@github.com/umpirsky/country-list.git#05fda51cd97b3294e8175ffed06104c44b3c71d7"
   "version" "1.0.0"
 
@@ -920,7 +921,7 @@
   "resolved" "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
   "version" "2.2.0"
 
-"bindings@^1.3.0":
+"bindings@^1.3.0", "bindings@^1.5.0":
   "integrity" "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ=="
   "resolved" "https://registry.npmjs.org/bindings/-/bindings-1.5.0.tgz"
   "version" "1.5.0"
@@ -941,6 +942,7 @@
     "wif" "^2.0.6"
 
 "bip39@https://github.com/bitcoinjs/bip39#d8ea080a18b40f301d4e2219a2991cd2417e83c2":
+  "integrity" "sha512-I2ADywus8maO/BPS8eEULUXS20kQYJQ+/W0MxSEkEUGP+nj58ZYUL0i7BWSRdKwjQxLU8fEchj5p2JqhCVBltg=="
   "resolved" "git+ssh://git@github.com/bitcoinjs/bip39.git#d8ea080a18b40f301d4e2219a2991cd2417e83c2"
   "version" "3.0.3"
   dependencies:
@@ -955,6 +957,7 @@
   "version" "1.1.0"
 
 "bls12377js@https://github.com/celo-org/bls12377js#cb38a4cfb643c778619d79b20ca3e5283a2122a6":
+  "integrity" "sha512-genS+AxHQKkrKA2xa1C1HCzSlZM8S/ZQEnjqET9u78/fpbHrNbXWvFYypYA3h7ukTD+WpF0hh+S9yxH6mhx4iA=="
   "resolved" "git+ssh://git@github.com/celo-org/bls12377js.git#cb38a4cfb643c778619d79b20ca3e5283a2122a6"
   "version" "0.1.0"
   dependencies:
@@ -2628,6 +2631,19 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
+"fsevents@^1.2.7":
+  "integrity" "sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-1.2.13.tgz"
+  "version" "1.2.13"
+  dependencies:
+    "bindings" "^1.5.0"
+    "nan" "^2.12.1"
+
+"fsevents@~2.3.1":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
+
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -4060,7 +4076,7 @@
     "multibase" "^0.7.0"
     "varint" "^5.0.0"
 
-"nan@^2.13.2":
+"nan@^2.12.1", "nan@^2.13.2":
   "integrity" "sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ=="
   "resolved" "https://registry.npmjs.org/nan/-/nan-2.14.2.tgz"
   "version" "2.14.2"
