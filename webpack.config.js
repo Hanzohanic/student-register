@@ -7,7 +7,8 @@ module.exports = {
   mode: "development",
   devtool: "cheap-module-eval-source-map",
   entry: {
-    main: path.resolve(process.cwd(), "src", "main.js")
+    index: './src/main.js',
+    main: './src/app.js'
   },
   output: {
     path: path.resolve(process.cwd(), "docs"),
@@ -26,7 +27,49 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(process.cwd(), "public", "index.html")
-    })
-  ]
+      template: './public/index.html',
+      inject: 'body',
+      chunks: ['index', 'main'],
+      filename: 'index.html'
+    }),
+
+    new HtmlWebpackPlugin({
+        template: './public/admin.html',
+        inject: 'body',
+        chunks: ['index', 'main'],
+        filename: 'admin.html'
+      }),
+
+    new HtmlWebpackPlugin({
+        template: './public/student.html',
+        inject: 'body',
+        chunks: ['main'],
+        filename: 'student.html'
+      }),
+  ],
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader"
+        ]
+      },
+
+      {
+        test: /\.(png|jpg|jp(e*)g)$/,
+        use: [
+            {
+                loader: 'url-loader',
+                options: {
+                    name: '[name].[hash:20].[ext]',
+                    limit: 8192
+                }
+            }
+        ]
+    }
+    ]
+  },
 }

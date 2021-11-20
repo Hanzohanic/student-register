@@ -1,198 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>stud-reg</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
+</head>
 
-
-    <style>
-body,html {
-  height: 100%;
-        margin: 0;
-}
-      :root {
-        --bs-font-sans-serif: "DM Sans", sans-serif;
-      }
-
-      @media (min-width: 576px) {
-        .card {
-          border: 0;
-          box-shadow: rgb(0 0 0 / 5%) 0px 10px 20px;
-          border-radius: 10px;
-        }
-
-        .card-img-top {
-          width: 100%;
-          height: 20vw;
-          object-fit: cover;
-        }
-      }
-
-  .header{
-    height: 100%;
-  }
-
-  .lower {
-    height: 100%;
-    padding-top: 5%;
-  }
-
-    </style>
-
-  </head>
-
-  <body style="background: #4ac29a;">
-    <section class="header">
+<body class="backhome">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-
-          <!---The modal-->
-          <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
-            <div
-              class="modal-dialog modal-lg modal-dialog-centered"
-              role="document"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Please Enter The Students Details</h4>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+        <nav class="navbar navbar-light navbar-expand-lg navigation-clean" style="background: transparent;">
+            <div class="container"><a class="navbar-brand text-uppercase link-dark" href="#" style="font-weight: bold;color: var(--bs-light);font-family: ABeeZee, sans-serif;">Student management</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html" style="color: var(--bs-light);font-weight: bold;font-family: ABeeZee, sans-serif;">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="admin.html" style="color: var(--bs-light);font-weight: bold;font-family: ABeeZee, sans-serif;">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="student.html" style="color: var(--bs-light);font-weight: bold;font-family: ABeeZee, sans-serif;">Student</a></li>
+                    </ul>
                 </div>
-                <div class="modal-body" style="background: #4ac29a;">
-                  <form>
-                    <div class="input-group" style="margin-bottom: 20px;">
-                        <span class="input-group-text">Student Image Url</span>
-                        <input class="form-control" type="text" id="image" required/>
-                      </div>
-                    <div class="input-group" style="margin-bottom: 20px;">
-                      <span class="input-group-text">Student ID</span>
-                      <input class="form-control" type="text" id="stud_id" required/>
-                    </div>
-                    <div class="input-group" style="margin-bottom: 20px;">
-                      <span class="input-group-text">Student Full Name</span>
-                      <input class="form-control" type="text" id="name" required/>
-                    </div>
-                    <div class="input-group" style="margin-bottom: 20px;">
-                      <span class="input-group-text">Study Major</span>
-                      <input class="form-control" type="text" id="major" required/>
-                    </div>
-                    <div class="input-group">
-                      <span class="input-group-text">Tuition Fees To Pay</span>
-                      <input class="form-control" type="text" id="fees" required/>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    class="btn btn-light"
-                    type="button"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    class="btn btn-outline-success btn-lg"
-                    data-bs-dismiss="modal"
-                    id="newStudentBtn"
-                    type="button"
-                  >
-                    Save
-                  </button>
-                </div>
-              </div>
             </div>
-          </div>
-          <!--modal ends here-->
-
-
-          <!-- Navbar -->
-          <nav
-            class="navbar navbar-light navbar-expand-md"
-            style="text-align: center;"
-          >
-            <div class="container-fluid">
-              <a
-                class="navbar-brand"
-                href="#"
-                style="
-                  text-align: center;
-                  font-weight: bold;
-                  font-size: 30px;
-                  color: var(--bs-light);
-                "
-              >
-                Student Registration
-              </a>
-              <span
-                class="nav-link border rounded-pill bg-success"
-                style="color: var(--bs-gray-900);"
-              >
-                <span id="balance">0&nbsp;</span>
-                cUsd
-              </span>
+        </nav>
+    </div>
+    <div class="container" style="height: 100%;">
+        <div class="row" style="height: 800px;">
+            <div class="col-md-12" style="background: var(--bs-green);padding-top: 50px;">
+                <h1 class="display-1 text-uppercase text-center" style="font-weight: bold;background: transparent;color: var(--bs-light);font-family: ABeeZee, sans-serif;">Welcome to the Student portal</h1>
+                <section class="highlight-clean" style="background: var(--bs-green);">
+                    <div class="container">
+                        <div class="intro">
+                            <h2 class="text-uppercase text-center" style="font-weight: bold;font-family: ABeeZee, sans-serif;">How it works</h2>
+                            <p class="text-center" style="color: var(--bs-light);font-size: 20px;font-style: italic;">This is a student management system, its for managing different aspects of the administrative process at a educational institution. The features offered include the ability for the school administration to register students, and expel students. It also includes an interface for students to be able to see the tuition amount they need to pay for that particular school term as well as be able to pay using celo.</p>
+                        </div>
+                        <div class="buttons"><a class="btn btn-outline-success" role="button" href="admin.html" style="font-family: ABeeZee, sans-serif;">Are you admin?</a><a class="btn btn-outline-dark" role="button" href="student.html" style="font-family: ABeeZee, sans-serif;">Are you a student?</a></div>
+                    </div>
+                </section>
             </div>
-          </nav>
-
-          <!--navbar ends here-->
-          <div class="alert alert-info sticky-top mt-2" role="alert">
-            <span id="notification">Loading please wait....</span>
-          </div>
-
-          <!--header with information about the dapp-->
-          <header style="text-align: center; margin-top: 20%;">
-            <h1
-              class="display-1 text-center"
-              style="
-                font-weight: bold;
-                background: transparent;
-                color: var(--bs-light);
-              "
-            >
-              Welcome to the student registration portal
-            </h1>
-            <p style="color: whitesmoke;
-            font-size: 30px;
-            font-weight: bold;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">This interface offers the administration of 
-              any educational institution to capture student information as well
-              as the tuition fee the student has to pay for their desired course. 
-              Click button below to get started!
-            </p>
-            <button
-              class="btn btn-outline-success btn-lg"
-              type="button"
-              data-bs-target="#modal-1"
-              data-bs-toggle="modal"
-              style="text-align: center; color: var(--bs-gray-900);"
-            >
-              Add a student
-            </button>
-          </header>
         </div>
-      </div>
     </div>
-  </section>
-
-  <!-- Container for added students-->
-  <section class="lower">
-    <div class="container">
-      <main id="student" class="row"></main>
-    </div>
-  </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/ethereum-blockies@0.1.1/blockies.min.js"></script>
-  </body>
+</body>
+
 </html>

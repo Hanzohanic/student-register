@@ -12,6 +12,8 @@
 
 # run npm install
 
+# install the following packages by running npm install -D css-loader@5.2.7, file-loader@6.2.0, normalize.css, style-loader@2.0.0, url-loader 4.1.1
+
 # to start application run 'npm run dev'
 
 # to build application run 'npm run build'
