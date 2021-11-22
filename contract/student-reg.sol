@@ -82,6 +82,18 @@ contract StudentRegistration {
         );
     }
 
+       function getTuitionStatus(uint _index) public view returns (bool)  {
+         if(students[_index].tuitionDate < block.timestamp){
+            //  user has not paid
+             return false;
+         }else{
+            //  user has paid
+             return true;
+         }
+       
+
+    }
+
     function getStudentLength() public view returns (uint256) {
         return (studentsLength);
     }

@@ -1,5 +1,6 @@
 import Web3 from "web3";
 import { newKitFromWeb3 } from "@celo/contractkit";
+import BigNumber from "bignumber.js";
 import studentAbi from "../contract/student.abi.json";
 import erc20Abi from "../contract/erc20.abi.json";
 
@@ -11,7 +12,7 @@ require('./styles/Navigation-Clean.css');
 require('./styles/style.css');
 
 const ERC20_DECIMALS = 18;
-const MPContractAddress = "0xB649bED12364504f81455c3e4af426447A932CB6";
+const MPContractAddress = "0x6940f170737865CF49ea9B58406527B241D0b3BE";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
 let kit;
@@ -69,7 +70,7 @@ const connectCeloWallet = async function () {
           studentId: p[2],
           name: p[3],
           studyMajor: p[4],
-          tuitionFee: p[5],
+          tuitionFee: new BigNumber(p[5]),
         });
       });
       _students.push(_student);
@@ -110,7 +111,7 @@ const connectCeloWallet = async function () {
             <a class="btn btn-sm btn-outline-dark payFees fs-6 p-3" id=${
               _student.index
             }>
-            Pay:${_student.tuitionFee} cUSD
+            Pay:${_student.tuitionFee.shiftedBy(-ERC20_DECIMALS).toFixed(2)}  cUSD
             </a>
           </div>
         </div>

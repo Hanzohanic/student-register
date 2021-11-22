@@ -1,11 +1,12 @@
 import Web3 from "web3";
 import { newKitFromWeb3 } from "@celo/contractkit";
+import BigNumber from "bignumber.js";
 import marketplaceAbi from "../contract/student.abi.json";
 
 const ERC20_DECIMALS = 18;
 
 
-const MPContractAddress = "0xB649bED12364504f81455c3e4af426447A932CB6";
+const MPContractAddress = "0x6940f170737865CF49ea9B58406527B241D0b3BE";
 
 
 let kit;
@@ -47,6 +48,7 @@ const getStudents = async function () {
   for (let i = 0; i < _studentsLength; i++) {
     let _student = new Promise(async (resolve, reject) => {
       let p = await contract.methods.students(i).call();
+      let paidStatus = await contract.methods.getTuitionStatus(i).call();
       resolve({
         index: i,
         owner: p[0],
@@ -54,7 +56,8 @@ const getStudents = async function () {
         studentId: p[2],
         name: p[3],
         studyMajor: p[4],
-        tuitionFee: p[5],
+        tuitionFee: new BigNumber(p[5]),
+        paidStatus,
       });
     });
     _students.push(_student);
@@ -92,12 +95,18 @@ function adminTemplate(_student) {
         <p class="card-text mb-4">
          Major:  ${_student.studyMajor}             
         </p>
+
         <p class="card-text mb-4">
-         Amount Owed: ${_student.tuitionFee} cUsd            
+         Paid:  ${_student.paidStatus}             
+        </p>  
+
+        <p class="card-text mb-4">
+         Amount Owed: ${_student.tuitionFee.shiftedBy(-ERC20_DECIMALS).toFixed(2)} cUsd            
         </p>
       </div>
     </div>
   `;
+
 }
 
 function identiconTemplate(_address) {
@@ -144,7 +153,9 @@ document
       document.getElementById("stud_id").value,
       document.getElementById("name").value,
       document.getElementById("major").value,
-      document.getElementById("tuitionFee").value,
+      new BigNumber(document.getElementById("tuitionFee").value)
+      .shiftedBy(ERC20_DECIMALS)
+      .toString()
     ];
     notification(`Adding "${params[2]}"`);
     try {
