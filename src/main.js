@@ -6,7 +6,7 @@ import marketplaceAbi from "../contract/student.abi.json";
 const ERC20_DECIMALS = 18;
 
 
-const MPContractAddress = "0x6940f170737865CF49ea9B58406527B241D0b3BE";
+const MPContractAddress = "0x2e768875D2B33E66B30f82Cd34eb886DF40aa473";
 
 
 let kit;
