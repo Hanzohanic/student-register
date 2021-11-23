@@ -12,7 +12,7 @@ require('./styles/Navigation-Clean.css');
 require('./styles/style.css');
 
 const ERC20_DECIMALS = 18;
-const MPContractAddress = "0x2e768875D2B33E66B30f82Cd34eb886DF40aa473";
+const MPContractAddress = "0xDCc839CbDb5557416A0f9221c3946794Bf55eA54";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
 let kit;
